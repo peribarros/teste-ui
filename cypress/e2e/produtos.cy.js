@@ -3,7 +3,7 @@
 describe('Funcionalidade página de produto', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/produtos/')
+        cy.visit('produtos/')
     });
 
     it("Deve selecionar um produto na lista", () => {
@@ -31,5 +31,9 @@ describe('Funcionalidade página de produto', () => {
 
 
     })
+
+   it.only('Adicionar produtos usando comandos customizados', () => {
+    cy.addProdutos('Frankie Sweatshirt', 3)
+   });
 
 });

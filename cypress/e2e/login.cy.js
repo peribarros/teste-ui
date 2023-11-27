@@ -4,7 +4,7 @@ const perfil = require('../fixtures/perfil.json')
 context('Funcionalidade Login', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('minha-conta/')
     });
 
     afterEach(() => {

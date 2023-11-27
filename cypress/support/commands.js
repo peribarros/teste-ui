@@ -23,3 +23,32 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', (usuario, senha) => {
+    cy.get('#username').type(usuario)
+    cy.get('#password').type(senha)
+    cy.get('.woocommerce-form > .button').click()
+})
+
+Cypress.Commands.add('preCadastro', (email, senha, nome, sobrenome) => {
+    cy.get('#reg_email').type(email)
+    cy.get('#reg_password').type(senha)
+    cy.get(':nth-child(4) > .button').click()
+
+    cy.get('.woocommerce-MyAccount-navigation-link--edit-account > a').click()
+    cy.get('#account_first_name').type(nome)
+    cy.get('#account_last_name').type(sobrenome)
+    cy.get('.woocommerce-Button').click()
+
+})
+
+Cypress.Commands.add('addProdutos', (quantidade) => {
+    cy.get('.product-block')
+        .contains('Frankie Sweatshirt').click()
+    cy.get('.button-variable-item-M').click()
+    cy.get('.button-variable-item-Yellow').click()
+    // clear - limpar o campo de texto
+    cy.get('.input-text').clear()
+    cy.get('.input-text').type(quantidade)
+    cy.get('.single_add_to_cart_button').click()
+})

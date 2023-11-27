@@ -12,7 +12,7 @@ const randomEmail = faker.internet.email(); // Kassandra.Haley@erich.biz
 describe('Funcionalidade pré-cadastro', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('minha-conta/')
     });
 
     it('Deve completar o cadastro com sucesso', () => {
@@ -29,6 +29,12 @@ describe('Funcionalidade pré-cadastro', () => {
         cy.get('#account_last_name').type(sobrenomeFaker)
         cy.get('.woocommerce-Button').click()
 
+        cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
+    });
+
+    it('Pré-cadastro com sucesso usandoo comandos customizados', () => {
+        let emailFaker2 = faker.internet.email()
+        cy.preCadastro(emailFaker2, 'senha!@Forte','Peri', 'Barros' )
         cy.get('.woocommerce-message').should('contain','Detalhes da conta modificados com sucesso.')
     });
     
